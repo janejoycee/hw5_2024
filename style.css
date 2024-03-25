@@ -1,0 +1,224 @@
+/* logo animation */
+@keyframes animateLogo {
+    0%   { width: 25px; opacity: 0; } /* Start with small width and invisible */
+    100% { width: 475px; opacity: 1; } /* End with larger width and fully visible */
+}
+
+/* Apply animation to logo  */
+#logo {
+    animation: animateLogo 5s forwards; /*  'animateLogo' animation for 5 seconds and keep the final state */
+}
+
+
+body {
+    font-family: 'Poppins', serif; 
+    background-color: #f1f1f1; /* Fallback background color if image is unavailable */
+    background-image: url('../images/concrete_seamless.png'); /* Background image */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-size: cover; /* background image to cover entire container */
+}
+
+/* Navigation links */
+.nav_links {
+    display: flex; 
+    flex-direction: column; /* items in column direction */
+    justify-content: center; /* Center items vertically */
+}
+
+.nav_item a:link {
+    color: rgb(35, 63, 221); /* Link color for normal state */
+}
+.nav_item a:active {
+    color: rgb(85, 207, 67); /* Link color for active state */
+}
+.nav_item a:visited {
+    color: rgb(40, 103, 30); /* Link color for visited state */
+}
+
+
+header {
+    display: flex; 
+    justify-content: center; /* Center items horizontally to the center*/
+    flex-direction: column; /* Arrange items in column direction */
+    align-items: center; /* Center items vertically to the center */
+}
+
+
+.card {
+    text-align: start; /* Align text to the start (left) */
+    flex-wrap: wrap; /* flex items to wrap onto multiple lines */
+    justify-content: space-around; /* creates equal spacing between items */
+    border-top-left-radius: 90px; 
+    border-top-right-radius: 90px; 
+    flex-basis: 450px; /* Initial width of flex item */
+}
+
+
+.pricing {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-evenly;  /* creates equal spacing between items INCLUDING first and last item */
+}
+
+
+.card > header:first-child {
+    background-color: #288088; 
+    border: solid 2px #45ADAD; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    border-top-left-radius: 50px; 
+    border-top-right-radius: 50px; 
+}
+
+
+.gallery {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; /* Center items horizontally */
+    max-width: 100%; 
+}
+
+/* Styles for images in the gallery */
+.gallery img {
+    border: 10px solid #50C7C7; 
+    margin: 10px; 
+    width: 300px; 
+    height: 200px; 
+}
+
+/* Media query for screens with a minimum width of 900px */
+@media screen and (min-width: 900px) {
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines if needed */
+    /* align-items: center; */
+    justify-content: space-between;
+
+}
+
+
+#logo {
+    display: flex;
+    justify-content: left; /* Align items to the left within their container */
+    align-items: center; /* Center items vertically */
+}
+
+
+.nav_links {
+    flex-direction: row;
+  }
+  
+.nav_item {
+    justify-content: flex-end; /* Align items to the end of the container horizontally */
+    align-items: flex-end;  
+}
+
+.card {
+    flex-basis: 275px;
+}
+
+.pricing {
+    flex-direction: row; 
+    align-items: center; 
+    text-align: center; 
+    justify-content: center;
+  }
+  
+.card header {
+    justify-content: flex-start; 
+    align-items: flex-start; 
+  }
+}
+/* Media query for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;  /* Disable animation for the logo */
+    }
+}
+
+/* @media print and (orientation:portrait) {  */
+/* Media query for print styles */
+
+/* Change the font on your body to Arial with a backup value of  Helvetica
+
+
+The background image should be removed. 
+
+
+Edit the nav/nav_links elements so that they are spaced according to the image above.
+
+
+Edit the pricing class so that the elements align along the bottom.  As long as it aligns along the bottom we don't care if the cards aren't the same height.
+
+
+The card elements should have a solid border 2px of #45ADDD and use flex-basis of 325px. 
+
+
+No part of the gallery should be visible.
+
+
+Without using list-style-type add the thumbs up entity as shown in the cards. This is a challenge problem. You should not give or receive help when completing it.**For some people the thumbs up is not printing as yellow. That is fine.
+ */
+@media print {
+
+body {
+    font-family: Arial, Helvetica;
+    background-color: #f1f1f1;
+    background-image: none;
+}
+
+.nav_links {
+    flex-direction: row;
+  }
+
+.nav_item {
+    justify-content: space-between;
+    align-items: flex-end;
+    /* center? */
+}
+
+.pricing {
+    flex-direction: row; 
+    align-items: flex-end; 
+    text-align: center; 
+    justify-content: center;
+  }
+
+.card {
+    flex-basis: 325px;
+    border: 2px solid #45ADDD;  
+}
+
+.card > header:first-child {
+    border: none;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+/* changed the radius to 50px so that it fits in the card container */
+/* before it was 90 to hide the backround image but we removed it */
+.card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+
+}
+/* Hide the gallery section in print mode */
+
+#gallery {
+    visibility: hidden;
+   /* Hide the element but keep the space it occupies */
+
+}
+
+.gallery {
+    display: none; /* Hide the element completely */
+}
+
+/* Styling for the first list item in cards in print mode */
+.card ul li:first-child::after {
+    content: "👍";
+}
+}
